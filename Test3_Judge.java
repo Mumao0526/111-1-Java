@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Judge {
+public class Test3_Judge {
     public static void main(String[] args){
         printStr("Try some judge!");
 
