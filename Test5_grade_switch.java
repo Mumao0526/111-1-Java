@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Test_grade_switch {
+public class Test5_grade_switch {
     public static void main(String[] args){
         printStr("Grade!");
 
