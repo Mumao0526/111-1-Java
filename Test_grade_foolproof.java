@@ -11,10 +11,10 @@ public class Test_grade_foolproof {
         System.out.printf("num1 =");
         String input = InputSomething.nextLine();
 
-        if (ThisStringisInt(input)) {
+        if (ThisStringisInt(input)) { //If is int
             int num1 = Integer.parseInt(input);
-            while (num1!=404) {
-                if(num1 < 101) {
+            while (num1!=404) { //Jump out code
+                if(num1 < 101 && num1>=0) {    //If num1 in 0~100
                     switch (num1 / 10) {
                         case 10:
                             printStr("A");
