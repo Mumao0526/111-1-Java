@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Test_grade {
+public class Test4_grade {
     public static void main(String[] args){
         printStr("Grade!");
 
