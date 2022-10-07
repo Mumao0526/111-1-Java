@@ -1,2 +1,2 @@
-# the_first_java
-in class
+# 111-1-Java
+NCUT CSIE Java
