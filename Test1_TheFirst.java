@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class TheFirst{
+public class Test1_TheFirst{
 	public static void main(String[] args){
 		System.out.println("Initialzation:" + args[0]);
 		printStr("This's an adder!");
