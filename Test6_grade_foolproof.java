@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import static java.lang.System.exit;
 
-public class Test_grade_foolproof {
+public class Test6_grade_foolproof {
     public static void main(String[] args){
         printStr("Grade!");
 
