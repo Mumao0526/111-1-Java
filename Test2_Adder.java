@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Adder {
+public class Test2_Adder {
     public static void main(String[] args){
         printStr("This's an adder!");
 
