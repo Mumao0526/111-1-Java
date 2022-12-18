@@ -1,40 +1,46 @@
-import com.sun.source.tree.BinaryTree;
-
-// Not yet
 
 public class Test_BinaryTree {
     public static void main(String[] args) {
-        int key[] = {20,56,9,45,21,36};
-        int[] result  = BuiludBinaryTree(key);
-        System.out.println();
+        int[] key = {20,21,22,23,24};
+        int[] nullArray_1 = new int[0];
+        int[] nullArray_2 = null;
+
+        int[] result  = BuiludBinaryTreeByArray(nullArray_2);
         for(int i:result)System.out.print(i+" ");
+
     }
-    static int[] BuiludBinaryTree(int[] key){
-        int[] tree = new int[255];
 
-        tree[0] = key[0];
+    // 存成陣列形式的二元樹
+    static int[] BuiludBinaryTreeByArray(int[] key){
+        // Alarm, if no input
+        int[] errNumber = {-1};
+        if (key == null || key.length == 0) {
+            System.out.println("Builud binary tree fail.");
+            return errNumber;
+        }
 
-        for(int k = 1; k < key.length; k++) {
-            int nodeIndex = 0;
-            int flag = 0;
+        int[] tree = new int[(int)Math.pow(2,key.length)-1];        // 避免出現右or左斜樹造成陣列空間不足
 
-            while (flag != -1 && key[k] >= tree[nodeIndex]) {
+        tree[0] = key[0];       // 第一個輸入的值必為樹根
 
-                if(tree[2 * nodeIndex + 2] == 0) {
+        for(int k = 1; k < key.length; k++) {   // 歷遍所有輸入值
+            int nodeIndex = 0;  // 從樹根開始判斷
+
+            // NOTE: if/else if內的判斷式不可對調
+            while (true) {
+                if(key[k] >= tree[nodeIndex] && tree[2 * nodeIndex + 2] == 0) {      // 若右子節點為空
                     tree[2 * nodeIndex + 2] = key[k];
-                    flag = -1;
+                    break;      // 已存好當前的input值，後續不須再做
+                }else if (key[k] >= tree[nodeIndex]){
+                    nodeIndex = 2 * nodeIndex + 2;      // 設定下一輪要比較的節點
                 }
-                System.out.println(nodeIndex+" "+tree[2 * nodeIndex + 1]);
-                nodeIndex = 2 * nodeIndex + 2;
-                   // debug
-            }
-            while (flag != -1 && key[k] < tree[nodeIndex]){
-                if (tree[2 * nodeIndex + 1] == 0){
+
+                if (key[k] < tree[nodeIndex] && tree[2 * nodeIndex + 1] == 0){      // 若左子節點為空
                     tree[2 * nodeIndex + 1 ] = key[k];
-                    flag = -1;
+                    break;      // 已存好當前的input值，後續不須再做
+                }else if (key[k] < tree[nodeIndex]){
+                    nodeIndex = 2 * nodeIndex + 1;      // 設定下一輪要比較的節點
                 }
-                nodeIndex = 2 * nodeIndex + 1;
-                //System.out.println(tree[2 * nodeIndex + 1]);     // debug
             }
         }
         return tree;
