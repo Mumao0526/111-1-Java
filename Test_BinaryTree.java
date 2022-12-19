@@ -5,9 +5,13 @@ public class Test_BinaryTree {
         int[] nullArray_1 = new int[0];
         int[] nullArray_2 = null;
 
-        int[] result  = BuiludBinaryTreeByArray(nullArray_2);
+        int[] result  = BuiludBinaryTreeByArray(key);
         for(int i:result)System.out.print(i+" ");
 
+        System.out.println();
+
+        int[] result2 = InsertValue(result,25);
+        for(int i:result2)System.out.print(i+" ");
     }
 
     // 存成陣列形式的二元樹
@@ -44,5 +48,48 @@ public class Test_BinaryTree {
             }
         }
         return tree;
+    }
+
+    // Not yet,wait to ensure
+    static int[] InsertValue(int[] tree,int key){
+        // Alarm, if no input
+        int[] errNumber = {-1};
+        if (tree == null || tree.length == 0) {
+            System.out.println("No binary tree.");
+            return errNumber;
+        }
+
+        // 若樹根為空，key值即為樹根
+        if (tree[0] == 0){
+            tree[0] = key;
+            return tree;
+        }
+
+        // 避免出現右or左斜樹造成陣列空間不足
+        int number = (int)(Math.log(tree.length+1) / Math.log(2));
+        int[] result = new int[(int)Math.pow(2,number + 1) - 1];
+        for (int i = 0 ; i < tree.length ; i++){
+            result[i] = tree[i];
+        }
+
+
+        int nodeIndex = 0;
+
+        while (true) {
+            if(key >= result[nodeIndex] && result[2 * nodeIndex + 2] == 0) {      // 若右子節點為空
+                result[2 * nodeIndex + 2] = key;
+                break;      // 已存好當前的input值，後續不須再做
+            }else if (key >= result[nodeIndex]){
+                nodeIndex = 2 * nodeIndex + 2;      // 設定下一輪要比較的節點
+            }
+
+            if (key < result[nodeIndex] && result[2 * nodeIndex + 1] == 0){      // 若左子節點為空
+                result[2 * nodeIndex + 1 ] = key;
+                break;      // 已存好當前的input值，後續不須再做
+            }else if (key < result[nodeIndex]){
+                nodeIndex = 2 * nodeIndex + 1;      // 設定下一輪要比較的節點
+            }
+        }
+        return result;
     }
 }
