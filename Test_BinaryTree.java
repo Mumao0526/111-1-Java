@@ -50,7 +50,7 @@ public class Test_BinaryTree {
         return tree;
     }
 
-    // Not yet,wait to ensure
+    
     static int[] InsertValue(int[] tree,int key){
         // Alarm, if no input
         int[] errNumber = {-1};
