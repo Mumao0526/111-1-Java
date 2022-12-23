@@ -1,6 +1,38 @@
+import javax.swing.tree.TreeNode;
 
 public class Test_BinaryTree {
+    static class TreeNode {
+        int key1;
+        int key2;
+        TreeNode leftchild, rightchild;
+
+        TreeNode(int key) {
+            this.key1 = key;
+            leftchild = null;
+            rightchild = null;
+        }
+        TreeNode(int key1,int key2) {
+            this.key1 = key1;
+            this.key2 = key2;
+            leftchild = null;
+            rightchild = null;
+        }
+    }
+
     public static void main(String[] args) {
+        TreeNode root = new TreeNode(25);
+        TreeNode NodeA = new TreeNode(20);
+        TreeNode NodeB = new TreeNode(30);
+        TreeNode NodeC = new TreeNode(10);
+
+        root.leftchild = NodeA;
+        root.rightchild = NodeB;
+        root.leftchild.leftchild = NodeC;
+
+
+        int[] data = {20,50,12,6,54,21,66,70};
+
+        /*
         int[] key = {20,21,22,23,24};
         int[] nullArray_1 = new int[0];
         int[] nullArray_2 = null;
@@ -12,7 +44,13 @@ public class Test_BinaryTree {
 
         int[] result2 = InsertValue(result,25);
         for(int i:result2)System.out.print(i+" ");
+
+         */
+
+
     }
+
+
 
     // 存成陣列形式的二元樹
     static int[] BuiludBinaryTreeByArray(int[] key){
@@ -50,7 +88,7 @@ public class Test_BinaryTree {
         return tree;
     }
 
-    
+
     static int[] InsertValue(int[] tree,int key){
         // Alarm, if no input
         int[] errNumber = {-1};
