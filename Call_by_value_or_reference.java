@@ -1,5 +1,19 @@
 public class Call_by_value_or_reference {
     public static void main(String[] args) {
+        /*
+        
+         memery
+        ________
+        |       | <- reference 1    *******************************
+        |       | <- reference 2      可想像成寫著參考值的便利貼
+        | value |       .             貼在類比成箱子的記憶體上
+        |       |       .           *******************************
+        |_______|       .
+        
+        */
+        
+
+        
         /*Variable*/
         int x = 10;
         
